@@ -1,0 +1,77 @@
+URL to the Hollywood dataset: https://datasets.imdbws.com/
+URL to the Bollywood dataset: https://www.kaggle.com/alokdas527/bollywood-movies-analysis
+
+We noticed that the Title_Akas table in the Hollywood Dataset contains movies from all over the world. The Name_Basics table in the Hollywood set also contains many international actors, including Bollywood actors. One interesting aspect to note about the Title_Principals table in the Hollywood dataset lists some of the characters that certain actors played. It is also interesting that the Bollywood dataset contains each actor's and actress' height in cm.
+
+Bolly_actors:
+Name               Height_in_cm
+Aamir Khan         163
+Himesh Reshamiya   163
+Kamal Haasan       165
+Kunal Khemu        166
+Shahid Kapoor      167
+
+Bolly_actress:
+Name               Height_in_cm     Debut_aslead_role
+Ameesha Patel      152              Kaho Naa... Pyaar Hai
+Soha Ali Khan      152              Rang De Basanti
+Tanuja Samarth     152              Hamari Yaad Aayegi
+Alia Bhatt         155              Student of the Year
+Zaira Wassim       155              Dangal
+
+Bolly_movies:
+Year  Title            Director             Cast     Genre             Release_Month  Release_Date  Highest_Grosser_By_Year_in_crores_ 
+1920  Shakuntala       Shree Nath Patankar  unknown  mythology, drama  null           null          null
+1920  Lava Kusha       R. Nataraja Mudaliar unknown  mythology         null           null          null
+1920  Narasinha Avtar  Shree Nath Patankar  unknown  mythology         null           null          null
+
+Title_Ratings
+tconst      averageRating     numVotes
+tt0000038   4.1               151
+tt0000040   4.3               39
+tt0000078   4.2               49
+tt0000167   4.1               104
+
+Title_Principals
+tconst       ordering   nconst      category     job       characters
+tt7785072    5          nm4129426   director     null      null
+tt7785090    6          nm0263218   writer       writer    null
+tt7785162    4          nm3280832   actress      null      ["Vanessa Hastings"]
+tt7785188    5          nm0037571   director     null      null
+tt7785270    2          nm9508107   self         null      ["Self","Journaliste"]
+
+Title_Episode
+tconst       parentTconst     seasonNumber      episodeNumber
+tt6184496    tt0284798        20                40
+tt5653386    tt0103396        24                40
+tt11802338   tt0167515        24                141
+tt8919968    tt0144724        25                165
+
+Title_Crew
+tconst        directors       writers
+tt0000009     nm0085156       nm0085156
+tt0000036     nm0005690       nm0410331
+tt0000076     nm0005690       nm0410331
+
+Title_Basics
+tconst     titleType    primaryTitle                originalTitle               isAdult    startYear  endYear    runtimeMinutes  genres 
+tt0000439  short        The Great Train Robbery     The Great Train Robbery     0          1903       null       11              Action,Crime,Short
+tt0000642  short        The Bandit's Waterloo       The Bandit's Waterloo       0          1908       null       12              Action,Short
+tt0000912  short        The Indian Runner's Romance The Indian Runner's Romance 0          1909       null       11              Short,Western
+
+Title_Akas
+titleId     ordering  title        region     language  types           attributes       isOriginalTitle 
+tt6828390   23        Mr. Jones    IE         en        imdbDisplay     null             0
+tt6843812   14        Baaghi 2     BR         null      imdbDisplay     null             0
+tt6964150    9        Silvana      SE         null      working         null             0
+
+Name_Basics
+nconst      primaryName           birthYear   deathYear	  primaryProfession    knownForTitles
+nm3854507   Íñigo Hernández       null        null                             tt1210541
+nm1915454   Ricardo Nakandakari   null        null        actor                tt0458190
+nm2282623   Maja Srkulj           null        null        costume_designer     tt0810500
+
+
+
+
+Since the Title.Akas table has international data, including Bollywood, we might be able to do a join with the Bollywood dataset to further examine these movies and actors. We can use titleId in Title_Akas to join with knownForTitles in in Name_Basics and retrieve the crew information for each Bolywood movie, since the Bollywood dataset does not provide this information. This will give us more information about the birth and deathYear of actors and actresses. We can also do another join on tconst in Title_Ratings to tconst in Title_Basics to give us the ratings of each Bollywood movie. 
