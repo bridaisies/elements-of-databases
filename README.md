@@ -1,4 +1,4 @@
 # cs327e: elements of databases at ut austin
 
-brionna huynh
+brionna huynh\
 email: brionna@utexas.edu
